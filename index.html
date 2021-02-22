@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation js</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        section{
+             position: relative;
+             width: 100%;
+             height: 100vh;
+             background: rgb(78, 78, 78);
+        }
+        section h1{
+            position: relative;
+            text-align: center;
+            width: 100%;
+            height: 100vh;
+            font-size: 10vw;
+            text-transform: capitalize;
+            line-height: 100vh;
+            color: #fff;
+            font-weight: 700;
+        }
+        .banner{
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            overflow: hidden;
+            flex-wrap: wrap;
+        }
+        .banner .poster{
+            position: relative;
+            display: block;
+            width: 5vw;
+            height: 5vw;
+            /* background: #FFF; */
+            animation: animate 0.75s ease-in-out forwards;
+        }
+        .banner .poster:nth-child(even){
+            animation: animate 1s ease-in-out forwards;
+            /* background: rgb(83, 54, 54); */
+
+           
+        }
+        .banner .poster:nth-child(7n+4){
+            animation: animate 2s ease-in-out forwards;
+            /* background: rgb(230, 43, 43); */
+
+        }
+        .banner .poster:nth-child(7n+7){
+            animation: animate 1.5s ease-in-out forwards;
+            /* background: rgb(53, 59, 139); */
+           
+        }
+        @keyframes animate{
+            0%{
+                opacity: 0;
+                transform: scale(0) translateY(1000px)rotate(360deg);
+            }
+            50%{
+                
+                opacity: 1;
+                background: url('https://images.pexels.com/photos/3760917/pexels-photo-3760917.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat;
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                
+            }
+            100%{
+                opacity: 1;
+                transform: scale(1) translateY(0px) rotate(0deg);
+                background: url('https://images.pexels.com/photos/3760917/pexels-photo-3760917.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat;
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                filter:hue-rotate(720deg);
+                
+
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>animationjs</h1>
+        <div class="banner">
+            <div class="poster"></div>
+        </div>
+    </section>
+    <script>
+        const banner = document.getElementsByClassName('banner')[0];
+        const poster = document.getElementsByClassName('poster');
+        for(var i=1; i<400; i++){
+            banner.innerHTML += "<div class='poster'></div>";
+            poster[i].style.animationDelay = `${i * 0.05}s`;
+        }
+        
+    </script>
+</body>
+</html>
